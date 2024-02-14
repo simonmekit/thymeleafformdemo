@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:border-bottom="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        table, th, td {
+            border: 1px dotted black;
+            border-collapse: collapse;
+            border-radius: 0;
+        }
+        th, td {
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,7 +24,7 @@
         <div class="col-md-8 mx-auto">
 <h2>Result</h2>
 <div class="my-3">
-    <p><strong>ID:</strong> <span th:text="${project.id}"></span></p>
+  <!--  <p><strong>ID:</strong> <span th:text="${project.id}"></span></p>
     <p><strong>Title:</strong> <span th:text="${project.title}"></span></p>
     <p><strong>Type:</strong> <span th:text="${project.type}"></span></p>
     <p><strong>Color:</strong> <span th:text="${project.color}"></span></p>
@@ -21,7 +32,36 @@
     <p><strong>Days:</strong> <span th:text="${project.days}"></span></p>
     <p><strong>Price:</strong> <span th:text="${project.price}"></span></p>
     <p><strong>Featured:</strong> <span th:text="${project.featured} ? 'Yes' : 'No'"></span></p>
-    <p><strong>Launch Date:</strong> <span th:text="${project.launchDate}"></span></p>
+    <p><strong>Launch Date:</strong> <span th:text="${project.launchDate}"></span></p> -->
+    <table>
+        <thead>
+        <tr>
+            <th> <strong>|ID |</strong></th>
+            <th> <strong>Title |</strong></th>
+            <th> <strong>Type |</strong></th>
+            <th> <strong>Color |</strong></th>
+            <th> <strong>Description |</strong></th>
+            <th> <strong>Days |</strong></th>
+            <th> <strong>Price |</strong></th>
+            <th> <strong>Featured |</strong></th>
+            <th> <strong>Launch Date|</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span th:text="${project.id}"></span></td>
+            <td><span th:text="${project.title}"></span></td>
+            <td><span th:text="${project.type}"></span></td>
+            <td><span th:text="${project.color}"></span></td>
+            <td><span th:text="${project.description}"></span></td>
+            <td><span th:text="${project.days}"></span></td>
+            <td><span th:text="${project.price}"></span></td>
+            <td><span th:text="${project.featured} ? 'Yes' : 'No'"></span></td>
+            <td><span th:text="${project.launchDate}"></span></td>
+        </tr>
+    </tbody>
+
+    </table>
 </div>
 <a th:href="@{/create-project}">Add new project</a>
         </div>
