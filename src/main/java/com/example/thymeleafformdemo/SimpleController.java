@@ -4,6 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class SimpleController {
 
@@ -19,7 +23,6 @@ public class SimpleController {
 	}
 		@GetMapping("/login")
 	    public String loginForm(Model model) {
-
 	        model.addAttribute("mylogin", new LoginPOJO());
 	        return "create-login";
 	    }
@@ -65,5 +68,32 @@ public class SimpleController {
 		return "greetingMessage"; // Return a simple template with only the message
 	}
 
+	@PostMapping("/test")
+	public String test(String userName, String password, Model model) {
+		model.addAttribute("userName", "Welcome: " + userName);
+		model.addAttribute("password", "Your password: " + password);
+		return "result2";
+	}
 
+	@GetMapping("/testView")
+	public String testView(Model model) {
+
+		//model.addAttribute("mylogin", new LoginPOJO());
+		return "test";
+	}
+@GetMapping("/signup")
+public String registerNewUser(Model model){
+			return "create_user";
+}
+@PostMapping("/signupresult")
+public String newUserResult(Model model, String name, int age, float salary, String telephone, String email, int zip, String gender){
+	model.addAttribute("Name", name);
+	model.addAttribute("Age", age);
+	model.addAttribute("Salary", salary);
+	model.addAttribute("Tel", telephone);
+	model.addAttribute("Email", email);
+	model.addAttribute("Zip", zip);
+	model.addAttribute("Gender", gender);
+return "userResult";
+}
 }
